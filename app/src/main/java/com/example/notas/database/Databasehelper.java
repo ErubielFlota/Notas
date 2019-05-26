@@ -39,13 +39,20 @@ public long insertNote(String note){
     }
 
 
-    public Note getNota(long id){
+    public Note getNote(long id){
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor= db.query(Note.TABLE_NAME,new String[]{Note.COLUMN_ID, Note.COLUMN_ID, Note.COLUMN_TIMESTAMP}, Note.COLUMN_ID+"=?",new String[]{String.valueOf(id)},null,null,null,null);
+        Cursor cursor= db.query(Note.TABLE_NAME,
+                new String[]{Note.COLUMN_ID, Note.COLUMN_NOTE,
+                        Note.COLUMN_TIMESTAMP},
+                Note.COLUMN_ID + "=?",
+                new String[]{String.valueOf(id)},null,null,null,null);
+
         if (cursor !=null)
             cursor.moveToFirst();
             Note note= new Note(
-                    cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)),cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE)),cursor.getString(cursor.getColumnIndex(Note.COLUMN_TIMESTAMP)));
+                    cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)),
+                    cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE)),
+                    cursor.getString(cursor.getColumnIndex(Note.COLUMN_TIMESTAMP)));
 
         cursor.close();
         return note;
