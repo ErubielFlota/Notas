@@ -1,6 +1,6 @@
 package com.example.notas.database.model;
 
-public class Nota {
+public class Note {
 
         public static final String TABLE_NAME="notes";
         public static final String COLUMN_ID="id";
@@ -13,10 +13,10 @@ public class Nota {
 
         public static final String CREATE_TABLE="CREATE TABLE"+ TABLE_NAME+"("+COLUMN_ID+"INTEGER PRIMARY KEY AUTOINCREMENT,"+COLUMN_NOTE+"TEXT,"+COLUMN_TIMESTAMP+"DATETIME DEFAULT CURRENT_TIMESTAMP"+")";
 
-        public Nota(){
+        public Note(){
 
         }
-        public Nota(int id, String note, String timestamp){
+        public Note(int id, String note, String timestamp){
             this.id=id;
             this.note=note;
             this.timestamp=timestamp;
